@@ -16,7 +16,7 @@ pipeline {
             }
             post {
                 success {
-                        subject: "Unit and Integration Tests Passed: ${currentBuild.fullDisplayName}",
+                        subject: "Unit and Integration Tests Passed",
                         body: "The Unit and Integration Tests stage passed successfully.",
                         mail to: "maryam.khazaeepool@gmail.com"
                 }
@@ -37,7 +37,7 @@ pipeline {
             }
             post {
                 success {
-                        subject: "Security Scan Passed: ${currentBuild.fullDisplayName}",
+                        subject: "Security Scan Passed",
                         body: "The Security Scan stage passed successfully.",
                         mail to: "maryam.khazaeepool@gmail.com"
                 }
