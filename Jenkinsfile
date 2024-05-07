@@ -14,6 +14,22 @@ pipeline {
                 // Test steps go here
                 echo 'Run unit tests using a tool like JUnit and integration tests using a tool like Selenium.'
             }
+            post {
+                success {
+                    emailext(
+                        subject: "Unit and Integration Tests Passed: ${currentBuild.fullDisplayName}",
+                        body: "The Unit and Integration Tests stage passed successfully.",
+                        to: 'maryam.khazaeepool@gmail.com'
+                    )
+                }
+                failure {
+                    emailext(
+                        subject: "Unit and Integration Tests Failed: ${currentBuild.fullDisplayName}",
+                        body: "The Unit and Integration Tests stage failed.",
+                        to: 'maryam.khazaeepool@gmail.com'
+                    )
+                }
+            }
         }
 
         stage('Stage 3: Code Analysis') {
@@ -27,6 +43,22 @@ pipeline {
             steps {
                 // Security scan steps go here
                 echo 'Perform a security scan on the code using a tool like OWASP ZAP to identify vulnerabilities.'
+            }
+            post {
+                success {
+                    emailext(
+                        subject: "Security Scan Passed: ${currentBuild.fullDisplayName}",
+                        body: "The Security Scan stage passed successfully.",
+                        to: 'developer1@example.com,developer2@example.com'
+                    )
+                }
+                failure {
+                    emailext(
+                        subject: "Security Scan Failed: ${currentBuild.fullDisplayName}",
+                        body: "The Security Scan stage failed.",
+                        to: 'developer1@example.com,developer2@example.com'
+                    )
+                }
             }
         }
 
