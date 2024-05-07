@@ -16,9 +16,10 @@ pipeline {
             }
             post {
                 success {
+                    echo "Sending email notification."                    
+                        mail to: "maryam.khazaeepool@gmail.com",
                         subject: "Unit and Integration Tests Passed",
-                        body: "The Unit and Integration Tests stage passed successfully.",
-                        mail to: "maryam.khazaeepool@gmail.com"
+                        body: "The Unit and Integration Tests stage passed successfully."
                 }
                 }
             }
@@ -37,9 +38,10 @@ pipeline {
             }
             post {
                 success {
-                        subject: "Security Scan Passed",
-                        body: "The Security Scan stage passed successfully.",
-                        mail to: "maryam.khazaeepool@gmail.com"
+                         echo "Sending email notification."                    
+                        mail to: "maryam.khazaeepool@gmail.com",
+                        subject: "Unit and Integration Tests Passed",
+                        body: "The Unit and Integration Tests stage passed successfully."
                 }
             }
         }
