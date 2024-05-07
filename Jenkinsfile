@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Stage 1: Build') {
             steps {
-                // Build steps go here
+                // Build steps go here!
                 echo 'Build the code using a build automation tool like Maven to compile and package the code.'
             }
         }
