@@ -19,7 +19,7 @@ pipeline {
                         subject: "Unit and Integration Tests Passed: ${currentBuild.fullDisplayName}",
                         body: "The Unit and Integration Tests stage passed successfully.",
                         mail to: "maryam.khazaeepool@gmail.com"
-                    )
+                }
                 }
             }
 
