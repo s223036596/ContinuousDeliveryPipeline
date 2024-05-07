@@ -16,21 +16,12 @@ pipeline {
             }
             post {
                 success {
-                    emailext(
                         subject: "Unit and Integration Tests Passed: ${currentBuild.fullDisplayName}",
                         body: "The Unit and Integration Tests stage passed successfully.",
-                        to: 'maryam.khazaeepool@gmail.com'
-                    )
-                }
-                failure {
-                    emailext(
-                        subject: "Unit and Integration Tests Failed: ${currentBuild.fullDisplayName}",
-                        body: "The Unit and Integration Tests stage failed.",
-                        to: 'maryam.khazaeepool@gmail.com'
+                        mail to: "maryam.khazaeepool@gmail.com"
                     )
                 }
             }
-        }
 
         stage('Stage 3: Code Analysis') {
             steps {
@@ -46,18 +37,9 @@ pipeline {
             }
             post {
                 success {
-                    emailext(
                         subject: "Security Scan Passed: ${currentBuild.fullDisplayName}",
                         body: "The Security Scan stage passed successfully.",
-                        to: 'developer1@example.com,developer2@example.com'
-                    )
-                }
-                failure {
-                    emailext(
-                        subject: "Security Scan Failed: ${currentBuild.fullDisplayName}",
-                        body: "The Security Scan stage failed.",
-                        to: 'developer1@example.com,developer2@example.com'
-                    )
+                        mail to: "maryam.khazaeepool@gmail.com"
                 }
             }
         }
