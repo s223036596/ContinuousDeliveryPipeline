@@ -16,13 +16,21 @@ pipeline {
             }
             post {
                 success {
-                    echo "Sending email notification."                    
-                        mail to: "maryam.khazaeepool@gmail.com",
-                        subject: "Unit and Integration Tests Passed",
-                        body: "The Unit and Integration Tests stage passed successfully."
+                    echo "Sending email notification."
+                    mail to: "maryam.khazaeepool@gmail.com",
+                         subject: "Unit and Integration Tests Passed: ${currentBuild.fullDisplayName}",
+                         body: "The Unit and Integration Tests stage passed successfully.",
+                         attachLog: true
                 }
+                failure {
+                    echo "Sending email notification."
+                    mail to: "maryam.khazaeepool@gmail.com",
+                         subject: "Unit and Integration Tests Failed: ${currentBuild.fullDisplayName}",
+                         body: "The Unit and Integration Tests stage failed.",
+                         attachLog: true
                 }
             }
+        }
 
         stage('Stage 3: Code Analysis') {
             steps {
@@ -38,10 +46,18 @@ pipeline {
             }
             post {
                 success {
-                         echo "Sending email notification."                    
-                        mail to: "maryam.khazaeepool@gmail.com",
-                        subject: "Unit and Integration Tests Passed",
-                        body: "The Unit and Integration Tests stage passed successfully."
+                    echo "Sending email notification."
+                    mail to: "maryam.khazaeepool@gmail.com",
+                         subject: "Security Scan Passed: ${currentBuild.fullDisplayName}",
+                         body: "The Security Scan stage passed successfully.",
+                         attachLog: true
+                }
+                failure {
+                    echo "Sending email notification."
+                    mail to: "maryam.khazaeepool@gmail.com",
+                         subject: "Security Scan Failed: ${currentBuild.fullDisplayName}",
+                         body: "The Security Scan stage failed.",
+                         attachLog: true
                 }
             }
         }
