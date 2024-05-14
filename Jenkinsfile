@@ -8,10 +8,10 @@ pipeline {
             }
             post {
                 success {
+                    archiveArtifacts artifacts: '**/*.log', fingerprint: true  // Archive log files
                     mail to: "maryam.khazaeepool@gmail.com",
                          subject: "Build Status Email",
-                         body: "Build was successful",
-                         attachments: ['**/*.log']  // Attach log files to the email
+                         body: "Build was successful. Log files are available at: ${BUILD_URL}/artifact/"
                 }
             }
         }
