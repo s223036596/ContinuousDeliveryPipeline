@@ -11,7 +11,7 @@ pipeline {
                     mail to: "maryam.khazaeepool@gmail.com",
                          subject: "Build Status Email",
                          body: "Build was successful",
-                         attachmentsPattern: '**/*.log'  // Attach log files to the email
+                         attachments: ['**/*.log']  // Attach log files to the email
                 }
             }
         }
