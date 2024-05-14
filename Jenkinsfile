@@ -19,7 +19,7 @@ pipeline {
                     mail to: "maryam.khazaeepool@gmail.com",
                          subject: "Unit and Integration Tests Passed",
                          body: "The Unit and Integration Tests stage passed successfully.",
-                         attachLog: true  // Attach the build log
+                         attachBuildLog: true  // Attach the build log
                 }
             }
         }
@@ -41,7 +41,7 @@ pipeline {
                     mail to: "maryam.khazaeepool@gmail.com",
                          subject: "Security Scan Passed",
                          body: "The Security Scan stage passed successfully.",
-                         attachLog: true  // Attach the build log
+                         attachBuildLog: true  // Attach the build log
                 }
             }
         }
