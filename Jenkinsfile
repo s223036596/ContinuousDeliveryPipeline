@@ -1,73 +1,201 @@
 pipeline {
+
+ 
+
     agent any
+
+ 
+
+ 
+
     stages {
-        stage('Stage 1: Build') {
+
+ 
+
+        stage('Build') {
+
+ 
+
             steps {
-                // Build steps go here!
-                echo 'Build the code using a build automation tool like Maven to compile and package the code.'
+
+ 
+
+                echo "Using maven to build the code"
+
+ 
+
+ 
+
             }
-        }
-        stage('Stage 2: Unit and Integration Tests') {
-            steps {
-                // Test steps go here
-                echo 'Run unit tests using a tool like JUnit and integration tests using a tool like Selenium.'
-            }
+
+ 
+
             post {
-                success {
-                    archiveArtifacts artifacts: 'logs/**/*'  // Archive the log files
-                    echo "Sending email notification."
+
+ 
+
+                success{
+
+ 
+
                     mail to: "maryam.khazaeepool@gmail.com",
-                         subject: "Unit and Integration Tests Passed",
-                         body: "The Unit and Integration Tests stage passed successfully."
+
+ 
+
+                    subject: "Build Status Email",
+
+ 
+
+                    body: "Build was successful"
+
+ 
+
                 }
+
+ 
+
             }
+
+ 
+
         }
-        stage('Stage 3: Code Analysis') {
+
+ 
+
+ 
+
+        stage('Unit and Integration Tests') {
+
+ 
+
             steps {
-                // Code analysis steps go here
-                echo 'Integrate a code analysis tool like SonarQube to analyze the code and ensure it meets industry standards.'
+
+ 
+
+                echo "Using JUnit for Unit and Integration Testing."
+
+ 
+
             }
+
+ 
+
         }
-        stage('Stage 4: Security Scan') {
+
+ 
+
+        stage('Code Analysis') {
+
+ 
+
             steps {
-                // Security scan steps go here
-                echo 'Perform a security scan on the code using a tool like OWASP ZAP to identify vulnerabilities.'
+
+ 
+
+                echo "Use tools like SonarQube for code analysis"
+
+ 
+
             }
-            post {
-                success {
-                    archiveArtifacts artifacts: 'logs/**/*'  // Archive the log files
-                    echo "Sending email notification."
-                    mail to: "maryam.khazaeepool@gmail.com",
-                         subject: "Security Scan Passed",
-                         body: "The Security Scan stage passed successfully."
-                }
-            }
+
+ 
+
         }
-        stage('Stage 5: Deploy to Staging') {
+
+ 
+
+ 
+
+        stage('Security Scan') {
+
+ 
+
             steps {
-                // Staging deployment steps go here
-                echo 'Deploy the application to a staging server like an AWS EC2 instance.'
+
+ 
+
+                echo "Using OWASP ZAP for security scanning"
+
+ 
+
             }
+
+ 
+
         }
-        stage('Stage 6: Integration Tests on Staging') {
+
+ 
+
+ 
+
+        stage('Deploy to Staging') {
+
+ 
+
             steps {
-                // Staging integration test steps go here
-                echo 'Run integration tests on the staging environment using a tool like Selenium to ensure the application functions as expected in a production-like environment.'
+
+ 
+
+                 echo "Using tools like AWS CLI to deploy to  staging server"
+
+ 
+
+ 
+
             }
+
+ 
+
         }
-        stage('Stage 7: Deploy to Production') {
+
+ 
+
+ 
+
+        stage('Integration Tests on Staging') {
+
+ 
+
             steps {
-                // Production deployment steps go here
-                echo 'Deploy the application to a production server like an AWS EC2 instance.'
+
+ 
+
+                echo "Using Selenium to run integration tests on staging"
+
+ 
+
             }
+
+ 
+
         }
+
+ 
+
+ 
+
+        stage('Deploy to Production') {
+
+ 
+
+            steps {
+
+ 
+
+                 echo "Using AWS CLI to deploy to a production server"
+
+ 
+
+            }
+
+ 
+
+        }
+
+ 
+
     }
-    post {
-        success {
-            echo 'Pipeline completed successfully'
-        }
-        failure {
-            echo 'Pipeline failed'
-        }
-    }
+
+ 
+
 }
