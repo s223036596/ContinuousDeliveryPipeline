@@ -18,8 +18,7 @@ pipeline {
                     echo "Sending email notification."
                     mail to: "maryam.khazaeepool@gmail.com",
                          subject: "Unit and Integration Tests Passed",
-                         body: "The Unit and Integration Tests stage passed successfully.",
-                         attachBuildLog: true  // Attach the build log
+                         body: "The Unit and Integration Tests stage passed successfully."
                 }
             }
         }
@@ -40,8 +39,7 @@ pipeline {
                     echo "Sending email notification."
                     mail to: "maryam.khazaeepool@gmail.com",
                          subject: "Security Scan Passed",
-                         body: "The Security Scan stage passed successfully.",
-                         attachBuildLog: true  // Attach the build log
+                         body: "The Security Scan stage passed successfully."
                 }
             }
         }
